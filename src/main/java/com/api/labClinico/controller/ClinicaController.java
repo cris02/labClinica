@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,8 +43,8 @@ public class ClinicaController {
 		 return clinicaService.save(newClinica);
 	 }
 	 
-	 @PutMapping("/upd/{id}")
-	 public SclClinica update (@RequestBody   ClinicaRequest clinica, @PathVariable Integer id ) {
+	 @PutMapping("/upd")
+	 public SclClinica update (@RequestBody ClinicaRequest clinica, @RequestParam Integer id ) {
 		 SclClinica clinicaActual = clinicaService.findById(id);
 		 
 		 clinicaActual.setNomClinica(clinica.getNomClinica());
@@ -54,8 +53,8 @@ public class ClinicaController {
 		 return clinicaService.save(clinicaActual);
 	 }
 	 
-	 @DeleteMapping("/del/{id}")
-	 public void delete(@PathVariable Integer id) {
+	 @DeleteMapping("/del")
+	 public void delete(@RequestParam Integer id) {
 		 clinicaService.delete(id);
 	 }
 

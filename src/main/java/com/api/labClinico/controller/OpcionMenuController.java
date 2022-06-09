@@ -18,7 +18,7 @@ import com.api.labClinico.service.OpcionMenuService;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/opcionmenu")
-public class opcionmenucontrolador
+public class OpcionMenuController
 {
     @Autowired
     private OpcionMenuService objservicio;

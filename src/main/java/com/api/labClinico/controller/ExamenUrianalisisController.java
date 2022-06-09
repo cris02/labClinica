@@ -20,7 +20,7 @@ import com.api.labClinico.service.ExamenService;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/examen")
-public class examenurianalisiscontrolador {
+public class ExamenUrianalisisController {
 	
 	@Autowired
 	private ExamenService servicio;

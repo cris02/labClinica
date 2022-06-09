@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.labClinico.models.SclUsuario;
-import com.api.labClinico.request.LoginResponse;
+import com.api.labClinico.request.LoginRequest;
 import com.api.labClinico.service.SecurityService;
 
 @CrossOrigin(origins = "*")
@@ -21,7 +21,7 @@ public class SecurityController {
 	
 	
 	@GetMapping("/login")
-	public LoginResponse login(@RequestParam String email, String c) {
+	public LoginRequest login(@RequestParam String email, String c) {
 		
 		return null;//userdetailsserv.login(email, c);
 	}
