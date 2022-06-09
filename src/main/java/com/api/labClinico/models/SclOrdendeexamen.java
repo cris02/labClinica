@@ -24,6 +24,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -74,6 +75,19 @@ public class SclOrdendeexamen implements Serializable {
     private List<SclExamencoprologia> sclExamencoprologiaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sclOrdendeexamen", fetch = FetchType.LAZY)
     private List<SclExamenurianalisis> sclExamenurianalisisList;
+    
+
+    @Transient
+    private Integer pacienteId;
+    
+    public Integer getPacienteId() {
+		return pacienteId;
+	}
+
+	public void setPacienteId(Integer pacienteId) {
+		this.pacienteId = pacienteId;
+	}
+
 
     public SclOrdendeexamen() {
     }
