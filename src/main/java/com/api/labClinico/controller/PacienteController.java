@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.labClinico.models.SclPaciente;
+import com.api.labClinico.request.PacienteRequest;
 import com.api.labClinico.service.PacienteService;
 
 @CrossOrigin(origins = "*")
@@ -23,6 +24,7 @@ public class PacienteController {
 	
 	@Autowired 
 	private PacienteService servicio;
+
 	
 	@GetMapping("/all")
 	public List<SclPaciente> listar() {
@@ -35,17 +37,18 @@ public class PacienteController {
 	}
 	
 	@PostMapping("/save")
-	public void insertar(@RequestBody SclPaciente pac) {
-		servicio.insertar(pac);
+	public SclPaciente insertar(@RequestBody PacienteRequest pac) {		
+		
+		return servicio.insertar(pac);
 	}
 	
 	@PutMapping("/upd")
-	public void actualizar(@RequestBody SclPaciente pac) {
-		servicio.actualizar(pac);
+	public SclPaciente actualizar(@RequestBody PacienteRequest pac) {
+		return servicio.actualizar(pac);
 	}
 	
-	@DeleteMapping("/del")
-	public void eliminar(@RequestBody SclPaciente pac) {
-		servicio.eliminar(pac);
+	@DeleteMapping("/del") //?id=
+	public void eliminar(@RequestParam Integer id) {
+		servicio.eliminar(id);
 	}
 }

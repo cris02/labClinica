@@ -22,6 +22,10 @@ public class TipoDocumentoService
     public List<SclTipoDocumento> listar()
     { return tipodocumentopositorio.findAll(); }
     
+    public SclTipoDocumento listarId(Integer id) {
+    	return tipodocumentopositorio.findById(id).orElse(null);
+    }
+    
     public void eliminar(SclTipoDocumento obj)
     { tipodocumentopositorio.delete(obj); }
 }
