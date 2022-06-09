@@ -24,8 +24,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import javax.persistence.Transient;
 
 /**
  *
@@ -64,19 +67,23 @@ public class SclOrdendeexamen implements Serializable {
     private String uniHeces;
     @Column(name = "uni_orina", length = 10)
     private String uniOrina;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sclOrdendeexamen", fetch = FetchType.LAZY)
     private List<SclExamenquimicaclinica> sclExamenquimicaclinicaList;
+    @JsonIncludeProperties({"idPaciente"})
     @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente", nullable = false)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private SclPaciente idPaciente;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sclOrdendeexamen", fetch = FetchType.LAZY)
     private List<SclExamenhematologia> sclExamenhematologiaList;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sclOrdendeexamen", fetch = FetchType.LAZY)
     private List<SclExamencoprologia> sclExamencoprologiaList;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sclOrdendeexamen", fetch = FetchType.LAZY)
     private List<SclExamenurianalisis> sclExamenurianalisisList;
     
-
     @Transient
     private Integer pacienteId;
     
@@ -88,8 +95,7 @@ public class SclOrdendeexamen implements Serializable {
 		this.pacienteId = pacienteId;
 	}
 
-
-    public SclOrdendeexamen() {
+	public SclOrdendeexamen() {
     }
 
     public SclOrdendeexamen(Integer idOrdenexamen) {
