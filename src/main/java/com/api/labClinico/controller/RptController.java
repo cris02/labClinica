@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/rpt")
-public class RptController 
-{
+public class RptController {
     @Autowired
     private UsuarioService usuarioservicio;
     @Autowired

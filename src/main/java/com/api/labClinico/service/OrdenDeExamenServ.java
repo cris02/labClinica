@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.labClinico.models.SclOrdendeexamen;
+import com.api.labClinico.models.VExamenes;
+import com.api.labClinico.repository.ExamenRepositoty;
 import com.api.labClinico.repository.OrdenDeExamenRepository;
 import com.api.labClinico.repository.PacienteRepository;
 
@@ -15,7 +17,8 @@ public class OrdenDeExamenServ
     private OrdenDeExamenRepository repositorio;
     @Autowired
     private PacienteRepository pacienterepo;
-    
+    @Autowired
+    private ExamenRepositoty examenRepo;
 
     public List<SclOrdendeexamen> listar()
     { return repositorio.findAll(); }
@@ -34,5 +37,10 @@ public class OrdenDeExamenServ
     
     public void eliminar(SclOrdendeexamen a_obj)
     { repositorio.delete(a_obj); }
+    
+    //listar ordenes
+    public List<VExamenes> listarExamenes(Integer id) {
+    	return examenRepo.getExamenesPac(id);
+    }
 }
 
