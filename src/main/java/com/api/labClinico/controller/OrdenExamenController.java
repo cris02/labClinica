@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.labClinico.models.SclOrdendeexamen;
 import com.api.labClinico.models.VExamenes;
+import com.api.labClinico.request.OrdenExamenRequest;
 import com.api.labClinico.service.OrdenDeExamenServ;
 
 @CrossOrigin(origins = "*")
@@ -47,17 +48,21 @@ public class OrdenExamenController {
     public List<SclOrdendeexamen> listarIdPaciente(@RequestParam Integer id)
     { return servicio.listarOrdenPaciente(id); }
     
+	
     @PostMapping("/save")
-    public SclOrdendeexamen insertar(@RequestBody SclOrdendeexamen usu)
-    { return servicio.insertar(usu); }
+    public SclOrdendeexamen insertar(@RequestBody OrdenExamenRequest orden)
+    { return servicio.insertar(orden); }
+    
     
     @PutMapping("/upd")
-    public SclOrdendeexamen actualizar(@RequestBody SclOrdendeexamen a_obj)
-    { return servicio.actualizar(a_obj); }
+    public SclOrdendeexamen actualizar(@RequestBody OrdenExamenRequest orden)
+    { return servicio.actualizar(orden); }
     
-    @DeleteMapping("del")
-    public void eliminar(@RequestBody SclOrdendeexamen a_obj)
-    { servicio.eliminar(a_obj); }
+    
+    @DeleteMapping("/del")
+    public void eliminar(@RequestParam Integer id)
+    { servicio.eliminar(id); }
+    
     
     @GetMapping("/listarExamen/{id}")
     public List<VExamenes> listarExamen(@PathVariable Integer id) {

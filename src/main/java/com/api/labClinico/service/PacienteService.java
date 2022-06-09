@@ -31,7 +31,7 @@ public class PacienteService
     
     public SclPaciente insertar(PacienteRequest pac) {
     	SclPaciente newPac = new SclPaciente();
-    	newPac.setIdPaciente((int) pacienterepositorio.count()+1);
+    	newPac.setIdPaciente((int) pacienterepositorio.count() + 1000);
 		newPac.setIdClinica(clinicaserv.findById(pac.getIdClinica()));
 		newPac.setIdTipoDocumento(tipodocserv.listarId(pac.getIdTipoDocumento()));
 		newPac.setSclMunicipio(municipioserv.listarId(new SclMunicipioPK(
