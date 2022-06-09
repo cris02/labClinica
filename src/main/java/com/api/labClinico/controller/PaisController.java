@@ -25,17 +25,17 @@ public class PaisController {
 	 @Autowired
 	 private PaisService paisService;
 	 
-	 @GetMapping("/listar")
+	 @GetMapping("/all")
 	 public List<SclPais> listar() {
 		 return paisService.listar();
 	 }
 	 
-	 @GetMapping("show/{id}")
+	 @GetMapping("find/{id}")
 	 public SclPais show (@PathVariable String id) {
 		 return paisService.findById(id);
 	 }
 	 
-	 @PostMapping("/guardar")
+	 @PostMapping("/save")
 	 public SclPais guardar (@RequestBody PaisRequest pais) {
 		 SclPais newPais = new SclPais();
 		 
@@ -46,7 +46,7 @@ public class PaisController {
 		 return paisService.save(newPais);
 	 }
 	 
-	 @PutMapping("/update/{id}")
+	 @PutMapping("/upd/{id}")
 	 public SclPais update (@RequestBody  PaisRequest pais, @PathVariable String id ) {
 		 SclPais paisActual = paisService.findById(id);
 		 
@@ -57,7 +57,7 @@ public class PaisController {
 		 return paisService.save(paisActual);
 	 }
 	 
-	 @DeleteMapping("/delete/{id}")
+	 @DeleteMapping("/del/{id}")
 	 public void delete(@PathVariable String id) {
 		 paisService.delete(id);
 	 }

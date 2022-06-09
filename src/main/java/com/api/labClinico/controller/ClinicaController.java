@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.api.labClinico.models.SclClinica;
 import com.api.labClinico.request.ClinicaRequest;
@@ -23,17 +23,17 @@ public class ClinicaController {
 	@Autowired
 	private  ClinicaService clinicaService;
 	
-	@GetMapping("/listar")
+	@GetMapping("/all")
 	 public List<SclClinica> listar() {
 		 return clinicaService.listar();
 	 }
 	 
-	 @GetMapping("show/{id}")
-	 public SclClinica show (@PathVariable Integer id) {
+	 @GetMapping("find/{id}")
+	 public SclClinica show (@RequestParam Integer id) {
 		 return clinicaService.findById(id);
 	 }
 	 
-	 @PostMapping("/guardar")
+	 @PostMapping("/save")
 	 public SclClinica guardar (@RequestBody ClinicaRequest clinica) {
 		 SclClinica newClinica = new SclClinica();
 		 
@@ -43,8 +43,8 @@ public class ClinicaController {
 		 return clinicaService.save(newClinica);
 	 }
 	 
-	 @PutMapping("/update/{id}")
-	 public SclClinica update (@RequestBody   ClinicaRequest clinica, @PathVariable Integer id ) {
+	 @PutMapping("/upd")
+	 public SclClinica update (@RequestBody ClinicaRequest clinica, @RequestParam Integer id ) {
 		 SclClinica clinicaActual = clinicaService.findById(id);
 		 
 		 clinicaActual.setNomClinica(clinica.getNomClinica());
@@ -53,8 +53,8 @@ public class ClinicaController {
 		 return clinicaService.save(clinicaActual);
 	 }
 	 
-	 @DeleteMapping("/delete/{id}")
-	 public void delete(@PathVariable Integer id) {
+	 @DeleteMapping("/del")
+	 public void delete(@RequestParam Integer id) {
 		 clinicaService.delete(id);
 	 }
 
