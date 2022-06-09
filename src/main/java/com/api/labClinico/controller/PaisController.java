@@ -30,7 +30,7 @@ public class PaisController {
 		 return paisService.listar();
 	 }
 	 
-	 @GetMapping("find/{id}")
+	 @GetMapping("/find/{id}")
 	 public SclPais show (@PathVariable String id) {
 		 return paisService.findById(id);
 	 }
