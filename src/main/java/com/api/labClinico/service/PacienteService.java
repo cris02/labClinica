@@ -63,7 +63,7 @@ public class PacienteService
     { 
     	if(pacienterepositorio.existsById(pac.getIdPaciente())) {
     		SclPaciente newPac = new SclPaciente();
-        	newPac.setIdPaciente((int) pacienterepositorio.count()+1);
+        	newPac.setIdPaciente(pac.getIdPaciente());
     		newPac.setIdClinica(clinicaserv.findById(pac.getIdClinica()));
     		newPac.setIdTipoDocumento(tipodocserv.listarId(pac.getIdTipoDocumento()));
     		newPac.setSclMunicipio(municipioserv.listarId(new SclMunicipioPK(
